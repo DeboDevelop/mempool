@@ -6,9 +6,9 @@ function AllCards() {
     const [state] = useContext(CardContext);
     return (
         <div>
-            {state.map(card => (
-                <Card key={card.id} front={card.front} back={card.back} />
-            ))}
+            {state.map(card => {
+                return <Card key={card.id} id={card.id} front={card.front} back={card.back} />;
+            })}
         </div>
     );
 }

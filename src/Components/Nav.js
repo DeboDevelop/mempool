@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { CardContext } from "../CardContext";
-import firebase from "../firebase";
+import firebase, { auth, provider } from "../firebase";
 
-function Nav() {
+function Nav({ user, setUser }) {
     const [cardState, setCardState] = useContext(CardContext);
     const [state, setState] = useState(() => {
         return {
@@ -41,13 +41,35 @@ function Nav() {
             };
         });
     };
+    const login = () => {
+        auth.signInWithPopup(provider).then(() => {
+            const userId = firebase.auth().currentUser.uid;
+            setUser({
+                id: userId,
+            });
+        });
+    };
+    const logout = () => {
+        auth.signOut().then(() => {
+            setUser({
+                id: null,
+            });
+        });
+    };
     return (
         <nav>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Front" onChange={handleFront} />
-                <input type="text" placeholder="Back" onChange={handleBack} />
-                <button>Add Card</button>
-            </form>
+            {user.id ? (
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" placeholder="Front" onChange={handleFront} />
+                        <input type="text" placeholder="Back" onChange={handleBack} />
+                        <button>Add Card</button>
+                    </form>
+                    <button onClick={logout}>Logout</button>{" "}
+                </div>
+            ) : (
+                <button onClick={login}>Login</button>
+            )}
         </nav>
     );
 }
