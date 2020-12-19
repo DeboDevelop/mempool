@@ -29,11 +29,12 @@ function Nav({ user, setUser }) {
     };
     const handleSubmit = e => {
         e.preventDefault();
+        const userId = firebase.auth().currentUser.uid;
         setCardState(prevState => {
-            return [...prevState, state];
+            return [...prevState, { front: state.front, back: state.back, user: userId }];
         });
         const itemsRef = firebase.database().ref("cards");
-        itemsRef.push(state);
+        itemsRef.push({ front: state.front, back: state.back, user: userId });
         setState(() => {
             return {
                 front: "",

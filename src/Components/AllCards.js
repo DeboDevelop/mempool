@@ -3,12 +3,12 @@ import { CardContext } from "../CardContext";
 import Card from "./Card";
 
 function AllCards({ user, setUser }) {
-    const [state] = useContext(CardContext);
+    const [cardState] = useContext(CardContext);
     return (
         <>
             {user.id ? (
                 <div>
-                    {state.map(card => {
+                    {cardState.map(card => {
                         return <Card key={card.id} id={card.id} front={card.front} back={card.back} />;
                     })}
                 </div>
