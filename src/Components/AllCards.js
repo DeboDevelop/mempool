@@ -3,11 +3,11 @@ import { CardContext } from "../CardContext";
 import Card from "./Card";
 
 function AllCards() {
-    const [state, setState] = useContext(CardContext);
+    const [state] = useContext(CardContext);
     return (
         <div>
             {state.map(card => (
-                <Card front={card.front} back={card.back} />
+                <Card key={card.id} front={card.front} back={card.back} />
             ))}
         </div>
     );

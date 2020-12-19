@@ -1,5 +1,6 @@
-require("dotenv").config();
 import firebase from "firebase";
+require("dotenv").config();
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -9,6 +10,7 @@ const firebaseConfig = {
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 

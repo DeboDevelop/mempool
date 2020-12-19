@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { CardContext } from "../CardContext";
+import firebase from "../firebase";
 
 function Nav() {
     const [cardState, setCardState] = useContext(CardContext);
@@ -30,6 +31,14 @@ function Nav() {
         e.preventDefault();
         setCardState(prevState => {
             return [...prevState, state];
+        });
+        const itemsRef = firebase.database().ref("cards");
+        itemsRef.push(state);
+        setState(() => {
+            return {
+                front: "",
+                back: "",
+            };
         });
     };
     return (
