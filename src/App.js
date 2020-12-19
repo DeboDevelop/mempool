@@ -1,7 +1,8 @@
 import "./App.css";
+import AllCards from "./Components/AllCards";
 
 function App() {
-    return <h1>Hello World!!!</h1>;
+    return <AllCards />;
 }
 
 export default App;
