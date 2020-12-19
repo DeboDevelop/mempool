@@ -4,7 +4,6 @@ import Card from "./Card";
 
 function AllCards() {
     const [state, setState] = useContext(CardContext);
-    console.log(state);
     return (
         <div>
             {state.map(card => (
