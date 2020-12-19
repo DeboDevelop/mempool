@@ -64,8 +64,8 @@ function Nav({ user, setUser }) {
             {user.id ? (
                 <div>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Front" onChange={handleFront} />
-                        <input type="text" placeholder="Back" onChange={handleBack} />
+                        <input type="text" placeholder="Front" value={state.front} onChange={handleFront} />
+                        <input type="text" placeholder="Back" value={state.back} onChange={handleBack} />
                         <button>Add Card</button>
                     </form>
                     <button onClick={logout}>Logout</button>{" "}

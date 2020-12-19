@@ -3,7 +3,6 @@ import firebase from "../firebase";
 
 function Card({ id, front, back }) {
     const removeCard = () => {
-        console.log(id);
         const cardRef = firebase.database().ref(`/cards/${id}`);
         cardRef.remove();
     };
