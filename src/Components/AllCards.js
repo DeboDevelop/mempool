@@ -1,19 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { CardContext } from "../CardContext";
 import Card from "./Card";
 
 function AllCards() {
-    const [state, setState] = useState(() => {
-        return [
-            {
-                front: "Hello",
-                back: "World",
-            },
-            {
-                front: "When is the World's Day",
-                back: "Today is the World's Day",
-            },
-        ];
-    });
+    const [state, setState] = useContext(CardContext);
+    console.log(state);
     return (
         <div>
             {state.map(card => (
