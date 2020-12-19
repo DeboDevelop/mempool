@@ -41,7 +41,8 @@ function Nav({ user, setUser }) {
             };
         });
     };
-    const login = () => {
+    const login = e => {
+        e.preventDefault();
         auth.signInWithPopup(provider).then(() => {
             const userId = firebase.auth().currentUser.uid;
             setUser({
@@ -49,7 +50,8 @@ function Nav({ user, setUser }) {
             });
         });
     };
-    const logout = () => {
+    const logout = e => {
+        e.preventDefault();
         auth.signOut().then(() => {
             setUser({
                 id: null,

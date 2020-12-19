@@ -20,7 +20,7 @@ function App() {
     return (
         <CardProvider>
             <Nav user={user} setUser={setUser} />
-            <AllCards />
+            <AllCards user={user} setUser={setUser} />
         </CardProvider>
     );
 }
