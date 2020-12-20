@@ -1,9 +1,7 @@
-import React, { useContext, useState } from "react";
-import { CardContext } from "../CardContext";
+import React, { useState } from "react";
 import firebase, { auth, provider } from "../firebase";
 
-function Nav({ user, setUser }) {
-    const [cardState, setCardState] = useContext(CardContext);
+function Nav({ user, setUser, setCardState }) {
     const [state, setState] = useState(() => {
         return {
             front: "",
@@ -29,7 +27,7 @@ function Nav({ user, setUser }) {
     };
     const handleSubmit = e => {
         e.preventDefault();
-        const userId = firebase.auth().currentUser.uid;
+        const userId = user.id;
         setCardState(prevState => {
             return [...prevState, { front: state.front, back: state.back, user: userId }];
         });
@@ -44,20 +42,23 @@ function Nav({ user, setUser }) {
     };
     const login = e => {
         e.preventDefault();
-        auth.signInWithPopup(provider).then(() => {
-            const userId = firebase.auth().currentUser.uid;
-            setUser({
-                id: userId,
-            });
-        });
+        auth.signInWithPopup(provider)
+            .then(result => {
+                setUser({
+                    id: result.user.email,
+                });
+            })
+            .catch(err => console.log(err));
     };
     const logout = e => {
         e.preventDefault();
-        auth.signOut().then(() => {
-            setUser({
-                id: null,
-            });
-        });
+        auth.signOut()
+            .then(() => {
+                setUser({
+                    id: null,
+                });
+            })
+            .catch(err => console.log(err));
     };
     return (
         <nav>

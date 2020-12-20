@@ -1,21 +1,13 @@
-import React, { useContext } from "react";
-import { CardContext } from "../CardContext";
+import React from "react";
 import Card from "./Card";
 
-function AllCards({ user, setUser }) {
-    const [cardState] = useContext(CardContext);
+function AllCards({ user, cardState }) {
     return (
-        <>
-            {user.id ? (
-                <div>
-                    {cardState.map(card => {
-                        return <Card key={card.id} id={card.id} front={card.front} back={card.back} />;
-                    })}
-                </div>
-            ) : (
-                ""
-            )}
-        </>
+        <div>
+            {cardState.map(card => {
+                return <Card key={card.id} id={card.id} front={card.front} back={card.back} />;
+            })}
+        </div>
     );
 }
 
