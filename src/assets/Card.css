@@ -1,0 +1,30 @@
+.card {
+    perspective: 1000px;
+}
+
+.innercard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    text-align: center;
+}
+
+.card:hover .innercard {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
