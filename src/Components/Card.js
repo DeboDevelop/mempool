@@ -8,16 +8,21 @@ function Card({ id, front, back }) {
         cardRef.remove();
     };
     return (
-        <div className="bg-white h-24 w-40 m-4 card rounded-md border-gray-900 shadow-lg">
-            <button className="m-2 px-2 bg-red-600 rounded" onClick={removeCard}>
-                x
-            </button>
-            <div className="innercard">
-                <div className="cardface front">
-                    <h1>{front}</h1>
-                </div>
-                <div className="cardface back">
-                    <h1>{back}</h1>
+        <div className="h-24 w-40 m-4 p-2">
+            <div className="h-full w-full m-4 card rounded-md border-gray-900 shadow-lg">
+                <div className="innercard">
+                    <div className="bg-white cardface front">
+                        <button className="m-2 px-2 bg-red-600 rounded" onClick={removeCard}>
+                            x
+                        </button>
+                        <h1 className="text-center m-2">{front}</h1>
+                    </div>
+                    <div className="bg-white cardface back text-right">
+                        <button className="m-2 px-2 bg-red-600 rounded" onClick={removeCard}>
+                            x
+                        </button>
+                        <h1 className="text-center m-2">{back}</h1>
+                    </div>
                 </div>
             </div>
         </div>
