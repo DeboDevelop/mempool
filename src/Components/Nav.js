@@ -42,7 +42,7 @@ function Nav({ user, setUser, setCardState }) {
     };
     const login = e => {
         e.preventDefault();
-        auth.signInWithPopup(provider)
+        auth.signInWithRedirect(provider)
             .then(result => {
                 setUser({
                     id: result.user.email,
